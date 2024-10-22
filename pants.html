@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+      <style>
+         
+         *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            
+        }
+
+
+        input{
+        border-radius: 10px;
+        height: 40px;
+        width: 250px;
+        margin: 5px;
+        padding: 10px;
+        background-color: #222;
+        border-style: none;
+        color: white;
+      }
+
+      ::placeholder{
+        color: white;
+      }
+
+      .modal-body a{
+        text-decoration: none;
+        margin-left: 130px;
+      }
+
+      .modal-body button{
+        width: 250px;
+
+      }
+
+      .types{
+        position:relative;
+        width:84%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color:#222;
+        position: fixed;
+        z-index: 1;
+        margin-left: 8%;
+        }
+
+
+      .types a{
+        position: relatve;
+        display: inline-block;
+        font-weight:500;
+        color:white;
+        text-decoration: none;
+        padding:0 23px;
+        z-index: 1;
+        font-size: 20px;
+        font-family:sans-serif;
+      }
+      .types span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 170px;
+        height: 100%;
+        background:linear-gradient(45deg,#4e2323,#f80202) ;
+        border-radius: 8px;
+        transition: .5s;
+        
+      }
+
+      .types a:nth-child(1):hover~span{
+        left:0px;
+      }
+
+      .types a:nth-child(2):hover~span{
+        left:166px;
+      }
+
+      .types a:nth-child(3):hover~span{
+        left:323px;
+      }
+
+
+      .types a:nth-child(4):hover~span{
+        left:476px;
+      }
+
+
+      .types a:nth-child(5):hover~span{
+        left:635px;
+      }
+
+      .types a:nth-child(6):hover~span{
+        left:795px;
+      }
+
+      .types a:nth-child(7):hover~span{
+        left:958px;
+      }
+      
+
+      h1{
+        text-align: center;
+        font-weight: bold;
+        color: red;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+      }
+
+      .contents{
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            right: 100px;
+            position:absolute;
+            display: flex;
+            justify-content:center;
+            align-items: end;
+            border-radius: 5px;
+            flex-direction:row;
+            opacity: 0;
+            transition: 0.6s;
+           
+        }
+
+        .contents:hover{
+            opacity: 1;
+        }
+
+      .card:hover{
+        transform: scaley(1.05);
+      }
+
+      .shop-button{
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        color: white;
+        background-color: red;
+        border:none;
+        font-weight: bold;
+        font-family: sans-serif;
+        margin-right: 20px;
+        margin-left: 20%;
+        margin-bottom: 2%;
+      }
+
+      .cart-button{
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        color: white;
+        background-color: red;
+        border:none;
+        font-weight: bold;
+        font-family: sans-serif;
+        margin-bottom: 2%;
+      }
+
+      .cart-button:hover{
+        background-color: black;
+      }
+
+      .shop-button:hover{
+        background-color: black;
+      }
+
+      h2{
+        
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+
+      }
+      
+      p{
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+      .off-price{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      h4{
+        font-size: px;
+        color: rgb(206, 33, 33);
+      }
+
+      .org-price{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-decoration: line-through;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      .offer{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+      }
+     
+      .size{
+        margin-left: 10px;
+        width: 60px;
+        margin-top: 10px;
+      }
+
+      .lenth{
+        margin-left: 10px;
+        width: 60px;
+        margin-top: 10px;
+      }
+
+
+      .top{
+          text-align:center;
+          background-color:#222;
+          padding: 20px;
+        }
+        .top a{
+          color: white;
+          text-decoration: none;
+          font-size: 20px;
+        }
+
+        footer{
+          background-color: rgb(235, 232, 232);
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+
+        .foo-content{
+          text-align: justify;
+          margin: 20px;
+          line-height: 30px;
+        }
+
+        .foo-content p{
+          /* color: gray; */
+          font-size: 18px;
+          margin-left: -1px;
+        }
+
+        .foo-content a{
+          text-decoration: none;
+        }
+
+        .foo-content a,li:hover{
+          color:blue;
+        }
+         
+        a li{
+          list-style-type: none; 
+          color: gray;   
+        }
+        h6{
+          font-weight: bold;
+          font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .foo-content img{
+          margin: -2px;
+        }
+
+        .subscribe{
+          border-radius: 50px;
+          height: 50px;
+          width: 250px;
+          background-color: white;
+          border-style: none;
+          font-weight: bold;
+          margin: 5px;
+        }
+
+        .subscribe:hover{
+          background-color: #222;
+          color: white;
+        }
+
+
+      .pant-types a{
+        text-decoration: none;
+        margin: 17px;
+        color: black;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-size: 15px;
+      }
+
+      .pant-types a:hover{
+        color: red;
+        font-weight: bold;
+        text-decoration-line: underline;
+      
+      }
+      </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg shadow bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="./images/logo-removebg-preview (1).png" alt="" style="height: 80px; width: 130px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html" style="margin-top: -3px;"><i class="fa-solid fa-house mx-1"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Button trigger modal -->
+              <button class="btn border-0" style="margin-left: -11px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-user mx-1"></i>Sign in
+              </button>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="./wishlist.html" class="nav-link text-dark"><i class="fa-solid fa-heart mx-1"></i>Wishlist</a>
+          </li>
+         
+          <li class="nav-item">
+            <a href="./cart.html" class="nav-link text-dark"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart</a>
+          </li>
+         
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search your collections" aria-label="Search">
+           <button class="btn btn-outline-dark" style="height: 37px; margin-top:6px;">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Sign in to Your Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="text" placeholder="Enter Mobile Number"> <br>
+          <input type="text" placeholder="Enter Your Mail"> <br>
+          <input type="password" placeholder="Password"> <br>
+          <a href="" data-bs-toggle="modal" data-bs-target="#forget">forget Password?</a> <br>
+          <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#account">Create Account</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Sign in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-dark" id="account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Create your Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="text" placeholder="First Name" class="text-white"> <br>
+          <input type="text" placeholder="Last Name"> <br>
+          <input type="text" placeholder="Mobile Number"> <br>
+          <input type="text" placeholder="Your email"> <br>
+          <input type="password" placeholder="Password"> <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="forget" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Set your password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="password" placeholder="Enter new Password"> <br>
+          <input type="password" placeholder="re-enter Password"> <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Set password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+   <div class="container-fluid">
+    <div class="row">
+      <div class="d-none d-sm-none d-md-block">
+        <div class="types" style="top:110px;">
+          <a href="#f1">Formal Pants</a>
+          <a href="#f2">Polofit Pants</a>
+          <a href="#f3">Lycra Pants</a>
+          <a href="#f4">Cargo Pants</a>
+          <a href="#f5">Cotton Pants</a>
+          <a href="#f6">Baggy Pants</a>
+          <a href="#f7">Jogger Pants</a>
+          <span></span>
+       </div>
+      </div>
+    </div>
+   </div>
+
+
+
+
+   <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-md-none sm-type">
+        <h6 class="text-center fs-4 text-danger" style="margin-top: 130px;">Discover More Collections</h6>
+      </div>
+      <div class="col-6 d-md-none pant-types">
+        <a href="#f1">Formal Pants</a>
+         <a href="#f5">Cotton Pants</a>
+      </div>
+
+
+      <div class="col-6 d-md-none pant-types">
+        <a href="#f2">Polofit Pants</a>
+        <a href="#f6">Baggy Pants</a>
+      </div>
+
+
+      <div class="col-6 d-md-none pant-types">
+        <a href="#f3">Lycra Pants</a>
+         <a href="#f7">Jogger Pants</a>
+      </div>
+
+         <div class="col-6 d-md-none pant-types">
+             <a href="#f4">Cargo Pants</a>
+         </div>
+
+    </div>
+  </div>
+       
+           
+         
+       
+    
+<center>
+     <h1 id="f1" style="margin-top: 180px;">Formal Pants</h1>
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:15px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/formal pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Men's black formal Pants</h2>
+              <p>Black Collar Fabric Plain Embellished Non-Stretch Men Clothing,it is wear very comfortable and Pants With Oblique Pockets, Belt Not Included.</p>
+             <h3><span class="off-price">$499</span><span class="text-secondary org-price">$999</span><span class="text-success offer">50% off</span></h3>
+             <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+             <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Waist
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark size">26</button>
+                  <button class="btn border btn-outline-dark size">28</button>
+                  <button class="btn border btn-outline-dark size">30</button>
+                  <button class="btn border btn-outline-dark size">32</button>
+                  <button class="btn border btn-outline-dark size">34</button>
+                  <button class="btn border btn-outline-dark size">36</button>
+              </ul>
+            </div>
+            <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Length
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark lenth">26</button>
+                  <button class="btn border btn-outline-dark lenth">28</button>
+                  <button class="btn border btn-outline-dark lenth">30</button>
+                  <button class="btn border btn-outline-dark lenth">32</button>
+                  <button class="btn border btn-outline-dark lenth">34</button>
+                  <button class="btn border btn-outline-dark lenth">36</button>  
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+<div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top: 50px;">
+  <div class="row g-0">
+    <div class="col-md-4" >
+      <img src="./images/formal pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+      <div class="contents">    
+        <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+        <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+      </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Men Solid Slant pants</h2>
+        <p>Men Solid Slant Pocket Suit Trousers Without Belt Dark Grey Woven Fabric Plain Slight Stretch All Men Clothing and comfort stretching.</p>
+        <h3><span class="off-price">$449</span><span class="text-secondary org-price">$599</span><span class="text-success offer">45% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>  
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Lenth
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+  <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top: 50px;">
+  <div class="row g-0">
+  <div class="col-md-4" >
+  <img src="./images/formal pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+  <div class="contents">    
+    <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+    <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+  </div>  
+  </div>
+  <div class="col-md-8">
+  <div class="card-body">
+    <h2>Grey Slim Fit formal</h2>
+    <p>This formal pair of suit pant look great as part of a matching ensemble or to elevate a smart casual outfit,66% Polyester, 32% Viscose, 2% Elastane.</p>
+    <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">37% off</span></h3>
+    <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+  / <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+    <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Waist
+    </button>
+    <ul class="dropdown-menu">
+        <button class="btn border btn-outline-dark size">26</button>
+        <button class="btn border btn-outline-dark size">28</button>
+        <button class="btn border btn-outline-dark size">30</button>
+        <button class="btn border btn-outline-dark size">32</button>
+        <button class="btn border btn-outline-dark size">34</button>
+        <button class="btn border btn-outline-dark size">36</button>
+    </ul>
+  </div>
+  <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+    <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Length
+    </button>
+    <ul class="dropdown-menu">
+        <button class="btn border btn-outline-dark lenth">26</button>
+        <button class="btn border btn-outline-dark lenth">28</button>
+        <button class="btn border btn-outline-dark lenth">30</button>
+        <button class="btn border btn-outline-dark lenth">32</button>
+        <button class="btn border btn-outline-dark lenth">34</button>
+        <button class="btn border btn-outline-dark lenth">36</button>  
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+  <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top: 50px;">
+    <div class="row g-0">
+      <div class="col-md-4" >
+        <img src="./images/formal pant 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+        <div class="contents">    
+          <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+          <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+        </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Tommy Hilfiger Men Jeans</h2>
+          <p>Fabric is 100% Cotton.It look is very nice,Discover the perfect blend of rugged style and comfort with our Men's Stone Wash Straight Jeans.</p>
+          <h3><span class="off-price">$349</span><span class="text-secondary org-price">$499</span><span class="text-success offer">29% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top: 50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/formal pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+      <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+      <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+    </div>  
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+      <h2>Charles Blue Slim Fit</h2>
+      <p>Fabric is 100% Cotton.It look is very nice,Discover the perfect blend of rugged style and comfort with our Men's Stone Wash Straight Jeans.</p>
+      <h3><span class="off-price">$439</span><span class="text-secondary org-price">$499</span><span class="text-success offer">17% off</span></h3>
+      <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+      <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+      <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Waist
+      </button>
+      <ul class="dropdown-menu">
+          <button class="btn border btn-outline-dark size">26</button>
+          <button class="btn border btn-outline-dark size">28</button>
+          <button class="btn border btn-outline-dark size">30</button>
+          <button class="btn border btn-outline-dark size">32</button>
+          <button class="btn border btn-outline-dark size">34</button>
+          <button class="btn border btn-outline-dark size">36</button>
+      </ul>
+    </div>
+    <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+      <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Length
+      </button>
+      <ul class="dropdown-menu">
+          <button class="btn border btn-outline-dark lenth">26</button>
+          <button class="btn border btn-outline-dark lenth">28</button>
+          <button class="btn border btn-outline-dark lenth">30</button>
+          <button class="btn border btn-outline-dark lenth">32</button>
+          <button class="btn border btn-outline-dark lenth">34</button>
+          <button class="btn border btn-outline-dark lenth">36</button>  
+      </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top: 50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/formal pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2>Gavin Banana Republic fit</h2>
+            <p>Zip fly closure. Two on-seam pockets, two back welt pockets,Casual Collar Woven Fabric Plain Straight Leg Embellished Non-Stretch Men Clothing.</p>
+            <h3><span class="off-price">$4449</span><span class="text-secondary org-price">$649</span><span class="text-success offer">33% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group" style="margin-left:-1%; margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Waist
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark size">26</button>
+                <button class="btn border btn-outline-dark size">28</button>
+                <button class="btn border btn-outline-dark size">30</button>
+                <button class="btn border btn-outline-dark size">32</button>
+                <button class="btn border btn-outline-dark size">34</button>
+                <button class="btn border btn-outline-dark size">36</button>
+            </ul>
+          </div>
+          <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Length
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark lenth">26</button>
+                <button class="btn border btn-outline-dark lenth">28</button>
+                <button class="btn border btn-outline-dark lenth">30</button>
+                <button class="btn border btn-outline-dark lenth">32</button>
+                <button class="btn border btn-outline-dark lenth">34</button>
+                <button class="btn border btn-outline-dark lenth">36</button>  
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+
+
+        <h1 id="f2" style="margin-top: 100px; margin-bottom: 50px;">Polofit Pants</h1>
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:15px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/polofit pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Manfinity Black polo Pants</h2>
+          <p>Black Collar Fabric Plain Embellished Non-Stretch Men Clothing,it is wear very comfortable and Pants With Oblique Pockets, Belt Not Included.</p>
+          <h3><span class="off-price">$249</span><span class="text-secondary org-price">$499</span><span class="text-success offer">50% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/polofit pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Ted Baker Polo Fit Wool</h2>
+          <p>Bring added refinement to polo outfits with these Ted Baker trousers,it has very comfort and  crafted from wool-rich fabric for a luxurious handfeel.</p>
+          <h3><span class="off-price">$449</span><span class="text-secondary org-price">$499</span><span class="text-success offer">12% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/polofit pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Men Solid Slant Pocket</h2>
+          <p>White Collar Woven Fabric Plain Embellished Non-Stretch All Men Clothing,Polo outfits with these Ted Baker trousers, Belt Not Included.</p>
+          <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">43% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/polofit pant 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Metroberta Tressed Polo fit</h2>
+          <p>TAT Applicable Season : Spring and Autumn Applicable Scene : Daily Place Of Origin : China (mainland) Model Number : Man Suits Pants Style : Casual Front Style : Flat Pant Closure.</p>
+          <h3><span class="off-price">$349</span><span class="text-secondary org-price">$499</span><span class="text-success offer">35% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/polofit pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Dark Academia Elastic Waist</h2>
+          <p>Elevate your style with our dark academia men's elastic waist pleated tapered blazer pants. crafted from premium quality fabrics for a classic, tailored look.</p>
+          <h3><span class="off-price">$449</span><span class="text-secondary org-price">$599</span><span class="text-success offer">39% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/polofit pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Bordeaux Pantalon Velours</h2>
+          <p>Fabric with exceptionally accurate neat and durable stitching. This is Ideal for all your formal occasions. You will look natively executive anytime you put on this wear.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$699</span><span class="text-success offer">27% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+              
+              
+
+
+        <h1 id="f3" style="margin-top: 100px; margin-bottom: 50px;">Lycra Pants</h1>
+
+     
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Black Buckled Canvas</h2>
+          <p>This Men's Lycra pant is crafted from a comfortable and durable polycotton blend in a classic black color. These pants feature a button closure for a secure and stylish fit.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$599</span><span class="text-success offer">17% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Bordeaux Pantalon Velours</h2>
+          <p>Breathe easy. Powered by quick-drying Everlux fabric, these pants help you stay cool and comfortable in hot and humid yoga classes. Designed for Yoga. Streamlined fit that skims glutes and thighs.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$649</span><span class="text-success offer">43% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Pantalones rectos hombres</h2>
+          <p>LOREX brand of Fabrics presents an best quality of trouser fabric , which is PV lycra have 2 way stretch trouser fabric used for formal & casual trouser.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$599</span><span class="text-success offer">17% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+              
+              
+
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 4.jpg
+            " class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Regular Fit Lycra Pan</h2>
+          <p>This is solid colored casual trouser featuring a buttoned waist, designed with flat-front styling with 4 pockets. It is a stylish casual pant for men that can be styled either to fit even a formal look.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$599</span><span class="text-success offer">17% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+                
+              
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Unstitch Lycra Trouser</h2>
+          <p>Men Solid Color Simple Daily Slim Fit Suit Pants Navy Blue Fabric Slight Stretch Men Clothing are blue.This is Ideal for all your formal occasionsy time you put on this wear.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$599</span><span class="text-success offer">17% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/lycra pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2> Nike Men's Standard pants</h2>
+          <p>This Article Standard Fit For A Relaxed, Easy Feel Elastic Waist And Drawstring Hidden Zip Pocket Knit Fabric Feels Soft, Lightweight And Stretchy Nike Dri-Fit.</p>
+          <h3><span class="off-price">$499</span><span class="text-secondary org-price">$599</span><span class="text-success offer">17% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      
+
+
+
+
+
+
+
+
+        <h1 id="f4" style="margin-top: 100px; margin-bottom: 50px;">Cargo Pants</h1>
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/cargo pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Homme Pantalon Cargo</h2>
+          <p>The perfect casual cargo trouser. Made from a comfortable cotton fabric, these utility inspired trousers feature a concealed zip fly and six practical pockets.</p>
+          <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cargo pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Manfinity Men's Flap cargo</h2>
+        <p> Manfinity Hypemode Loose Fit Men's Cargo Pants With Flap Pockets,It is very comfortable Drawstring Waist And Side Pockets- Men Pants at SHEIN.</p>
+        <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cargo pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Draws Waist Cargo Pants</h2>
+        <p>Men's Loose Fit Flap Pocket Drawstring Waist Cargo Pants Brown Casual Woven Fabric Plain Cargo Pants Non-Stretch Men Clothing, size features are,Sleeve Length.</p>
+        <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: 11%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cargo pant 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Light Stone Straight Fit</h2>
+        <p>Classic cargo styling with a modern twist; we offer this style in slim or straight fit to best cater to your unique style. 98% Cotton, 2% Elastane.</p>
+        <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cargo pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>New Multi-Pocket Cargo</h2>
+        <p>This Article Standard Fit For A Relaxed, Easy Feel Elastic Waist And Drawstring Hidden Zip Pocket Knit Fabric Feels Soft, Lightweight And Stretchy Nike Dri-Fit.</p>
+        <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/cargo pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Casual Cargo Multi-Pocket</h2>
+          <p>Men's Outdoor Multi-Pocket Casual Cargo Pants Black Casual Woven Fabric Plain Cargo Pants Non-Stretch Men Clothing, size features Sleeve Length,Lightweight And Stretchy Nike Dri-Fit.</p>
+          <h3><span class="off-price">$549</span><span class="text-secondary org-price">$799</span><span class="text-success offer">32% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+        <h1 id="f5" style="margin-top: 100px; margin-bottom: 50px;">Cotton Pants</h1>
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Stefano Brown Slim Fit</h2>
+        <p>Crafted from a premium cotton blend, these trousers offer a perfect balance of comfort and style. The soft fabric ensures breathability and durability,making them an excellent choice for casual wear.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+     
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Black Slim Fit Cotton</h2>
+        <p>The secure pockets are perfect for keeping essentials like keys, wallets, or smartphones safe and within easy reach. These pockets add a modern touch while providing practicality.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+            
+            
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Frezo Dark Blue Slim Fit</h2>
+        <p>Made from 95% Cotton 5% polyester , medium-weight. Soft and Comfortable.Hand wash or delicate cycle on your machine is preferred. use of cold water is recommended.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: 11%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+              
+    
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Manteno Gray cotton pant</h2>
+        <p>These Classic trousers Is Sure To Be Comfortable And Functional For Everyday Wear. Perfect For Casual and formal Wear Like Home Wear, Casual and formal Outings, School, College.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Jackson Navy Blue Pants</h2>
+        <p>It is making them an excellent choice for casual wear. They are designed to provide long-lasting comfort throughout your busy day.Featuring a regular fit, these trousers strike the perfect balance.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px;  margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/cotton pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Bastoni Burgundy Cotton</h2>
+        <p> The modern cut complements various body types, providing a flattering silhouette. Whether paired with a t-shirt or a casual shirt, these pants offer a versatile look that suits any occasion.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$699</span><span class="text-success offer">43% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+
+
+      <h1 id="f6" style="margin-top: 100px; margin-bottom: 50px;">Baggy Pants</h1>
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/baggy pant 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Casual Breathable Baggy</h2>
+          <p>Material:PolyesterLength:RegularDetails:NonePatterned:Solid colorApplicable,Seasons:Spring/FallCare Instructions:Hand wash or professional dry cleanStyle:CasualClosure.</p>
+          <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/baggy pant 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2>Tapered Casual Baggy Pant</h2>
+            <p>FTX presents this lycra blend stretchable fabric Korean style trouser pants for men. Feel comfortable with this Baggy Fit trousers in any ocassion. You can wear this trouser pant for casual use.</p>
+            <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Waist
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark size">26</button>
+                <button class="btn border btn-outline-dark size">28</button>
+                <button class="btn border btn-outline-dark size">30</button>
+                <button class="btn border btn-outline-dark size">32</button>
+                <button class="btn border btn-outline-dark size">34</button>
+                <button class="btn border btn-outline-dark size">36</button>
+            </ul>
+          </div>
+          <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Length
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark lenth">26</button>
+                <button class="btn border btn-outline-dark lenth">28</button>
+                <button class="btn border btn-outline-dark lenth">30</button>
+                <button class="btn border btn-outline-dark lenth">32</button>
+                <button class="btn border btn-outline-dark lenth">34</button>
+                <button class="btn border btn-outline-dark lenth">36</button>  
+            </ul>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="card mb-3 shadow text-start" style="max-width:1100px;margin-top:50px;">
+            <div class="row g-0">
+              <div class="col-md-4" >
+                <img src="./images/baggy pant 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+                <div class="contents">    
+                  <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                  <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Men Slant Pocket Baggy</h2>
+              <p>Army Green Collar Denim Plain Straight Leg ,this lycra blend stretchable fabric Korean style trouser pants for men,and Embellished Non-Stretch Men Clothing.</p>
+              <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group" style="margin-left: 11%; margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Waist
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark size">26</button>
+                  <button class="btn border btn-outline-dark size">28</button>
+                  <button class="btn border btn-outline-dark size">30</button>
+                  <button class="btn border btn-outline-dark size">32</button>
+                  <button class="btn border btn-outline-dark size">34</button>
+                  <button class="btn border btn-outline-dark size">36</button>
+              </ul>
+            </div>
+            <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Length
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark lenth">26</button>
+                  <button class="btn border btn-outline-dark lenth">28</button>
+                  <button class="btn border btn-outline-dark lenth">30</button>
+                  <button class="btn border btn-outline-dark lenth">32</button>
+                  <button class="btn border btn-outline-dark lenth">34</button>
+                  <button class="btn border btn-outline-dark lenth">36</button>  
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+            <div class="card mb-3 shadow text-start" style="max-width:1100px;  margin-top:50px;">
+              <div class="row g-0">
+                <div class="col-md-4" >
+                  <img src="./images/baggy pant 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+                  <div class="contents">    
+                    <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                    <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                  </div>  
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2>Oversized Loose Baggy Fit</h2>
+                <p>Ben Martin Loose Fit Jeans Pant Designed for comfort and a relaxed style.Durable and classic denim fabric for a timeless look of this Baggy Jeans for Men.</p>
+                <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+                <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Waist
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn border btn-outline-dark size">26</button>
+                    <button class="btn border btn-outline-dark size">28</button>
+                    <button class="btn border btn-outline-dark size">30</button>
+                    <button class="btn border btn-outline-dark size">32</button>
+                    <button class="btn border btn-outline-dark size">34</button>
+                    <button class="btn border btn-outline-dark size">36</button>
+                </ul>
+              </div>
+              <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+                <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Length
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn border btn-outline-dark lenth">26</button>
+                    <button class="btn border btn-outline-dark lenth">28</button>
+                    <button class="btn border btn-outline-dark lenth">30</button>
+                    <button class="btn border btn-outline-dark lenth">32</button>
+                    <button class="btn border btn-outline-dark lenth">34</button>
+                    <button class="btn border btn-outline-dark lenth">36</button>  
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+
+
+
+
+              <div class="card mb-3 shadow text-start" style="max-width:1100px;  margin-top:50px;">
+                <div class="row g-0">
+                  <div class="col-md-4" >
+                    <img src="./images/baggy pant 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+                    <div class="contents">    
+                      <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                      <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                    </div>  
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h2>Bastoni Burgundy Cotton</h2>
+                  <p>Experience the comfortable feel of our Loose Fit Polyester and Cotton Multi Pocket Baggy Sweatpants! Relax and be stylish all at once!DETAILSFit Type: LooseMaterial: Polyester,Cotton.</p>
+                  <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+                  <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                  <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+                  <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Waist
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn border btn-outline-dark size">26</button>
+                      <button class="btn border btn-outline-dark size">28</button>
+                      <button class="btn border btn-outline-dark size">30</button>
+                      <button class="btn border btn-outline-dark size">32</button>
+                      <button class="btn border btn-outline-dark size">34</button>
+                      <button class="btn border btn-outline-dark size">36</button>
+                  </ul>
+                </div>
+                <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+                  <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Length
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn border btn-outline-dark lenth">26</button>
+                      <button class="btn border btn-outline-dark lenth">28</button>
+                      <button class="btn border btn-outline-dark lenth">30</button>
+                      <button class="btn border btn-outline-dark lenth">32</button>
+                      <button class="btn border btn-outline-dark lenth">34</button>
+                      <button class="btn border btn-outline-dark lenth">36</button>  
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
+
+
+                <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+                  <div class="row g-0">
+                    <div class="col-md-4" >
+                      <img src="./images/baggy pant 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+                      <div class="contents">    
+                        <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                        <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                      </div>  
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h2>MultiPocket Baggy pants</h2>
+                    <p> The modern cut complements various body types, providing a flattering silhouette. Whether paired with a t-shirt or a casual shirt, these pants offer a versatile look that suits any occasion.</p>
+                    <h3><span class="off-price">$1099</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">46% off</span></h3>
+                    <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                    <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Waist
+                    </button>
+                    <ul class="dropdown-menu">
+                        <button class="btn border btn-outline-dark size">26</button>
+                        <button class="btn border btn-outline-dark size">28</button>
+                        <button class="btn border btn-outline-dark size">30</button>
+                        <button class="btn border btn-outline-dark size">32</button>
+                        <button class="btn border btn-outline-dark size">34</button>
+                        <button class="btn border btn-outline-dark size">36</button>
+                    </ul>
+                  </div>
+                  <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Length
+                    </button>
+                    <ul class="dropdown-menu">
+                        <button class="btn border btn-outline-dark lenth">26</button>
+                        <button class="btn border btn-outline-dark lenth">28</button>
+                        <button class="btn border btn-outline-dark lenth">30</button>
+                        <button class="btn border btn-outline-dark lenth">32</button>
+                        <button class="btn border btn-outline-dark lenth">34</button>
+                        <button class="btn border btn-outline-dark lenth">36</button>  
+                    </ul>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
+
+
+      <h1 id="f7" style="margin-top: 100px; margin-bottom: 50px;">Jogger Pants</h1>
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/jogger pants 1.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Joggers Spring for Summer</h2>
+        <p>Grey flared-fit mid-rise joggers, has an elasticated waistband with drawstring closure and one back pocket, there may be a little difference with what you get. There are 3 kinds of elasticity.</p>
+        <h3><span class="off-price">$520</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">73% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/jogger pants 2.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Hypemode logan jogger</h2>
+          <p>Color: Grey Style: Street Pattern Type: Graphic, Slogan Details: Drawstring, Pocket, Tie Front Type: Cargo Pants Closure Type: Drawstring Waist Line: Natural Length: Long Fit.</p>
+          <h3><span class="off-price">$520</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">73% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+    <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+      <div class="row g-0">
+        <div class="col-md-4" >
+          <img src="./images/jogger pants 3.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+          <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2>Casual Side Pocket Jogger</h2>
+        <p>Material:Cotton,Length:Cropped,Details:Pocket,Patterned:Solid color,People:TeenSheer,NoFabric:Medium Stretch,Type:JoggerPant,Length:Cropped,Seasons:All-season.</p>
+        <h3><span class="off-price">$520</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">73% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Waist
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark size">26</button>
+            <button class="btn border btn-outline-dark size">28</button>
+            <button class="btn border btn-outline-dark size">30</button>
+            <button class="btn border btn-outline-dark size">32</button>
+            <button class="btn border btn-outline-dark size">34</button>
+            <button class="btn border btn-outline-dark size">36</button>
+        </ul>
+      </div>
+      <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Length
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn border btn-outline-dark lenth">26</button>
+            <button class="btn border btn-outline-dark lenth">28</button>
+            <button class="btn border btn-outline-dark lenth">30</button>
+            <button class="btn border btn-outline-dark lenth">32</button>
+            <button class="btn border btn-outline-dark lenth">34</button>
+            <button class="btn border btn-outline-dark lenth">36</button>  
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+
+      <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/jogger pants 4.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2>Drawstring Cuffed Jogger</h2>
+          <p>Black Street Collar Woven Fabric Plain Jogger Embellished Non-Stretch Men Clothing.The modern cut complements various body types, providing a flattering silhouette.</p>
+          <h3><span class="off-price">$520</span><span class="text-secondary org-price">$1999</span><span class="text-success offer">73% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Waist
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark size">26</button>
+              <button class="btn border btn-outline-dark size">28</button>
+              <button class="btn border btn-outline-dark size">30</button>
+              <button class="btn border btn-outline-dark size">32</button>
+              <button class="btn border btn-outline-dark size">34</button>
+              <button class="btn border btn-outline-dark size">36</button>
+          </ul>
+        </div>
+        <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+          <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Length
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn border btn-outline-dark lenth">26</button>
+              <button class="btn border btn-outline-dark lenth">28</button>
+              <button class="btn border btn-outline-dark lenth">30</button>
+              <button class="btn border btn-outline-dark lenth">32</button>
+              <button class="btn border btn-outline-dark lenth">34</button>
+              <button class="btn border btn-outline-dark lenth">36</button>  
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="card mb-3 shadow text-start" style="max-width:1100px; margin-top:50px;">
+          <div class="row g-0">
+            <div class="col-md-4" >
+              <img src="./images/jogger pants 5.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+              <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2>Hip Hop Joggers pants</h2>
+            <p>Material:Spandex,Length:Regular,Patterned:Solidc olor,Applicable People:Adult,Sheer:NoFabric:Slight Stretch Lining:Polyester Contour:Regular Seasons:All-season.</p>
+            <h3><span class="off-price">$395</span><span class="text-secondary org-price">$1799</span><span class="text-success offer">78% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Waist
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark size">26</button>
+                <button class="btn border btn-outline-dark size">28</button>
+                <button class="btn border btn-outline-dark size">30</button>
+                <button class="btn border btn-outline-dark size">32</button>
+                <button class="btn border btn-outline-dark size">34</button>
+                <button class="btn border btn-outline-dark size">36</button>
+            </ul>
+          </div>
+          <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+            <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Length
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn border btn-outline-dark lenth">26</button>
+                <button class="btn border btn-outline-dark lenth">28</button>
+                <button class="btn border btn-outline-dark lenth">30</button>
+                <button class="btn border btn-outline-dark lenth">32</button>
+                <button class="btn border btn-outline-dark lenth">34</button>
+                <button class="btn border btn-outline-dark lenth">36</button>  
+            </ul>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+
+
+
+          <div class="card mb-3 shadow text-start" style="max-width:1100px;  margin-top:50px;">
+            <div class="row g-0">
+              <div class="col-md-4" >
+                <img src="./images/jogger pants 6.jpg" class="img-fluid rounded-start" alt="..." width="400px">
+                <div class="contents">    
+                  <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                  <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Taper Jogger For Outdoor</h2>
+              <p>Men Cotton Flap Pocket Drawstring Waist Long Washed Denim Joggers Plain light green Party Punk Rock Friends Denim Plain Tapered.</p>
+              <h3><span class="off-price">$395</span><span class="text-secondary org-price">$1799/</span><span class="text-success offer">78% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group" style="margin-left: -1%; margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Waist
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark size">26</button>
+                  <button class="btn border btn-outline-dark size">28</button>
+                  <button class="btn border btn-outline-dark size">30</button>
+                  <button class="btn border btn-outline-dark size">32</button>
+                  <button class="btn border btn-outline-dark size">34</button>
+                  <button class="btn border btn-outline-dark size">36</button>
+              </ul>
+            </div>
+            <div class="btn-group" style=" margin-left: 10px;  margin-top: 10px;">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Length
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn border btn-outline-dark lenth">26</button>
+                  <button class="btn border btn-outline-dark lenth">28</button>
+                  <button class="btn border btn-outline-dark lenth">30</button>
+                  <button class="btn border btn-outline-dark lenth">32</button>
+                  <button class="btn border btn-outline-dark lenth">34</button>
+                  <button class="btn border btn-outline-dark lenth">36</button>  
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+</center>             
+
+
+
+            <div class="top">
+              <a href="#top">Back to Top</a>
+             </div>
+          
+             <footer>
+              
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs col-sm-6 col-md-3">
+                    <div class="foo-content">
+                      <h6>HELP & INFORMATION</h6>
+                      <a href=""><li>Help</li></a>
+                      <a href=""><li>Track Orders</li></a>
+                      <a href=""><li>Deliver & Returns</li></a>
+                      <a href=""><li>Sitemap</li></a>
+                    </div>
+                  </div>
+        
+                  <div class="col-xs col-sm-6 col-md-3">
+                    <div class="foo-content">
+                      <h6>ABOUT FAMOUS MEN'S WEAR</h6>
+                      <a href=""><li>About Us</li></a>
+                      <a href=""><li>Careers at Famous</li></a>
+                      <a href=""><li>Corporate responsibility</li></a>
+                      <a href=""><li>Investors'Site</li></a>
+                    </div>
+                  </div>
+        
+                  <div class="col-xs col-sm-6 col-md-3">
+                    <div class="foo-content">
+                      <h6>MORE FROM FAMOUS</h6>
+                      <a href=""><li>Mobile and Famous Apps</li></a>
+                      <a href=""><li>Famous Marketplace</li></a>
+                      <a href=""><li>Gift Voucher</li></a>
+                      <a href=""><li>Black Friday</li></a>
+                      <a href=""><li>Famous x Thrift+</li></a>
+                      <a href=""><li>Discover the Famous Credit Card</li></a>
+                    </div>
+                  </div>
+        
+                  <div class="col-xs col-sm-6 col-md-3">
+                    <div class="foo-content">
+                      <h6>SIGN UP TO NEWCUSTOMER</h6>
+                      <P class="fs-6">Enter your email address to get 5% off your first order and free shipping</P>
+                      <input type="text" placeholder="Enter your email...."style="border-radius: 50px; height: 50px;">
+                      <button class="subscribe">SUBSCRIBE</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+        
+        
+        
+              </div>
+                
+              <hr>
+              
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4 col-sm-4 col-md-5">
+                    <p class="fs-6"><i class="fa-regular fa-copyright"></i> 2024 Famous Men's Wear</p>
+                  </div>
+        
+                  <div class="col-8 col-sm-4 col-md-4" style="margin-top: -8px;">
+                    <img src="./images/facebook.png" alt="" style="height: 40px; width: 50px;">
+                    <img src="./images/instagram-removebg-preview.png" alt="" style="height: 40px; width: 50px; margin-left: -10px;">
+                    <img src="./images/snapchat-removebg-preview.png" alt="" style="height: 40px; width: 50px;">
+                    <img src="./images/youtube-removebg-preview.png" alt="" style="height: 40px; width: 50px;">
+                  </div>
+        
+                  <div class="col col-sm-4 col-md-3">
+                    <p class="fs-6">Privacy & Cookies | Ts&Cs | Accessibilityh</p>
+                  </div>
+                </div>
+              </div>
+                
+          
+             </footer>
+</body>
+</html>

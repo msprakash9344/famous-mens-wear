@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        input{
+        border-radius: 10px;
+        height: 40px;
+        width: 250px;
+        margin: 5px;
+        padding: 10px;
+        background-color: #222;
+        border-style: none;
+        color: white;
+      }
+
+      ::placeholder{
+        color: white;
+      }
+
+      .modal-body a{
+        text-decoration: none;
+        margin-left: 130px;
+      }
+
+      .modal-body button{
+        width: 250px;
+
+      }
+
+      .types{
+        position:relative;
+        width:90%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color: #222;
+        position: fixed;
+        z-index: 1;
+        margin-left: 5%;
+        }
+
+
+      .types a{
+        position: relatve;
+        display: inline-block;
+        font-weight:500;
+        color:white;
+        text-decoration: none;
+        padding:0 26px;
+        z-index: 1;
+        font-size: 20px;
+        font-family:sans-serif;
+      }
+      .types span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 170px;
+        height: 100%;
+        background:linear-gradient(45deg,#4e2323,#f80202) ;
+        border-radius: 8px;
+        transition: .5s;
+        
+      }
+
+      .types a:nth-child(1):hover~span{
+        left:0px;
+      }
+
+      .types a:nth-child(2):hover~span{
+        left:174px;
+      }
+
+      .types a:nth-child(3):hover~span{
+        left:345px;
+      }
+
+
+      .types a:nth-child(4):hover~span{
+        left:523px;
+      }
+
+
+      .types a:nth-child(5):hover~span{
+        left:700px;
+      }
+
+      .types a:nth-child(6):hover~span{
+        left:860px;
+      }
+
+      .types a:nth-child(7):hover~span{
+        left:1045px;
+      }
+      
+
+      h1{
+        text-align: center;
+        font-weight: bold;
+        color: red;
+      }
+
+      .contents{
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            right: 100px;
+            position:absolute;
+            display: flex;
+            justify-content:center;
+            align-items: end;
+            border-radius: 5px;
+            flex-direction:row;
+            opacity: 0;
+            transition: 0.6s;
+        }
+
+        .contents:hover{
+            opacity: 1;
+        }
+
+      .card:hover{
+        transform: scaley(1.05);
+      }
+
+      .shop-button{
+        height: 40px;
+        width: 200px;
+        border-radius: 5px;
+        color: white;
+        background-color:red;
+        border:none;
+        font-weight: bold;
+        font-family: sans-serif;
+        margin-right: 10px;
+        margin-left: 35%;
+        margin-bottom: 2%;
+      }
+
+      .cart-button{
+        height: 40px;
+        width: 200px;
+        border-radius: 5px;
+        color: white;
+        background-color:red;
+        border:none;
+        font-weight: bold;
+        font-family: sans-serif;
+        margin-bottom: 2%;
+      }
+
+      .cart-button:hover{
+        background-color: #222;
+      }
+
+      .shop-button:hover{
+        background-color:#222;
+      }
+
+      h2{
+        font-family: sans-serif;
+        font-size: 23px;
+        text-align: center;
+        font-weight: bold;
+        text-align: justify;
+      }
+      
+      p{
+        font-family: sans-serif;
+        font-size: 15px;
+        text-align: center;
+        text-align: justify;
+      }
+      .off-price{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-right: 10px;
+        font-size:20px;
+      }
+
+      h4{
+        color: rgb(206, 33, 33);
+        font-size: 20px;
+      }
+
+      .org-price{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-decoration: line-through;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      .offer{
+        font-weight: bold;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+      }
+     
+      .dropdown-menu{
+        width: 395px;
+      }
+      .size{
+       margin-left:4px;
+       width: 57px;
+       font-family:Georgia, 'Times New Roman', Times, serif;
+       font-style: italic;
+      }
+
+
+      .top{
+          text-align:center;
+          background-color:#222;
+          padding: 20px;
+        }
+        .top a{
+          color: white;
+          text-decoration: none;
+          font-size: 20px;
+        }
+
+        footer{
+          background-color: rgb(235, 232, 232);
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+
+        .foo-content{
+          text-align: justify;
+          margin: 20px;
+          line-height: 30px;
+        }
+
+        .foo-content p{
+          /* color: gray; */
+          font-size: 18px;
+          margin-left: -1px;
+        }
+
+        .foo-content a{
+          text-decoration: none;
+        }
+
+        .foo-content a,li:hover{
+          color:blue;
+        }
+         
+        a li{
+          list-style-type: none; 
+          color: gray;   
+        }
+        h6{
+          font-weight: bold;
+          font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .foo-content img{
+          margin: -2px;
+        }
+
+        .subscribe{
+          border-radius: 50px;
+          height: 50px;
+          width: 250px;
+          background-color: white;
+          border-style: none;
+          font-weight: bold;
+          margin: 5px;
+        }
+
+        .subscribe:hover{
+          background-color: #222;
+          color: white;
+        }
+
+        h1{
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-style: italic;
+          font-weight: bold;
+        }
+
+
+        .sm-type{
+        margin-top: 120px;
+      }
+
+      .sm-type a{
+        text-decoration: none;
+        margin: 10px;
+        color: black;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-size: 20px;
+      }
+
+      .sm-type a:hover{
+        color: red;
+        font-weight: bold;
+        text-decoration-line: underline;
+      
+      }
+
+      </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg shadow bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="./images/logo-removebg-preview (1).png" alt="" style="height: 80px; width: 130px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html" style="margin-top: -3px;"><i class="fa-solid fa-house mx-1"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Button trigger modal -->
+              <button class="btn border-0" style="margin-left: -11px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-user mx-1"></i>Sign in
+              </button>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="./wishlist.html" class="nav-link text-dark"><i class="fa-solid fa-heart mx-1"></i>Wishlist</a>
+          </li>
+         
+          <li class="nav-item">
+            <a href="./wishlist.html" class="nav-link text-dark"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart</a>
+          </li>
+         
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search your collections" aria-label="Search">
+           <button class="btn btn-outline-dark" style="height: 37px; margin-top:6px;">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Sign in to Your Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="text" placeholder="Enter Mobile Number"> <br>
+          <input type="text" placeholder="Enter Your Mail"> <br>
+          <input type="password" placeholder="Password"> <br>
+          <a href="" data-bs-toggle="modal" data-bs-target="#forget">forget Password?</a> <br>
+          <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#account">Create Account</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Sign in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-dark" id="account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Create your Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="text" placeholder="First Name" class="text-white"> <br>
+          <input type="text" placeholder="Last Name"> <br>
+          <input type="text" placeholder="Mobile Number"> <br>
+          <input type="text" placeholder="Your email"> <br>
+          <input type="password" placeholder="Password"> <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="forget" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Set your password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <input type="password" placeholder="Enter new Password"> <br>
+          <input type="password" placeholder="re-enter Password"> <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Set password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      <div class="contaniner-fluid">
+        <div class="row">
+          <div class="d-none d-sm-none d-md-block">
+            <div id="type">
+              <div class="types"  style="top:110px;">
+               <a href="#f1">Formal Shirts</a>
+               <a href="#f2">Casual Shirts</a>
+               <a href="#f3">Printed Shirts</a>
+               <a href="#f4">Popcorn Shirts</a>
+               <a href="#f5">Denim Shirts</a>
+               <a href="#f6">Lycra shirts</a>
+               <a href="#f7">Checked Shirts</a>
+               <span></span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="d-md-none sm-type">
+            <h6 class="text-center fs-4 text-danger">Discover More Collections</h6>
+            <a href="#f1">Formal Shirts</a>
+            <a href="#f2">Casual Shirts</a>
+            <a href="#f3">Printed Shirts</a>
+            <a href="#f4">Popcorn Shirts</a>
+            <a href="#f5">Denim Shirts</a>
+            <a href="#f6">Lycra shirts</a>
+            <a href="#f7">Checked Shirts</a>
+          </div>
+        </div>
+      </div>
+        
+         
+       <h1 id="f1" style="margin-top: 180px;">Formal shirts</h1>
+       
+       <div style="display: flex; margin:10px;">
+       <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/formal shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Men's Solid Casual wear</h2>
+              <p>Men's Solid Colors Shirts With Front Buttons,Long Sleeves, For Daily Casual Wear Dark Green formal Long Sleeve.</p>
+             <h3><span class="off-price">$350</span><span class="text-secondary org-price">$750</span><span class="text-success offer">50% off</span></h3>
+             <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+             <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+             </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+          <div class="col-md-4" >
+            <img src="./images/formal shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Stretch Bamboo Formal Shirt</h2>
+              <p>This is Aha Moment! Our novelty men's dress shirt style is a divine combination Regular fit button-down long sleeve.</p>
+             <h3><span class="off-price">$249</span><span class="text-secondary org-price">$449</span><span class="text-success offer">46% off</span></h3>
+             <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+             <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+             </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images/formal shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Homme Men's Long Sleeve</h2>
+                <p>To find out about the Manfinities Horse Ridings Printed Casual Shirts For Springs And Summer.</p>
+                <h3><span class="off-price">$199</span><span class="text-secondary org-price">$349</span><span class="text-success offer">38% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    
+    
+                <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images/formal shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Men Red Slim Fit Royal</h2>
+                   <p>Formal , Business Work,Party, Perfect gift for families,boyfriend,Regular Fit,Cotton , Full Sleeve.</p>
+                <h3><span class="off-price">$249</span><span class="text-secondary org-price">$399</span><span class="text-success offer">43% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+
+
+
+
+
+
+    <div style="display: flex; margin:10px;">
+    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images/formal shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>IndoPrimo Formal Regular Fit </h2>
+            <p>100% High-grade Cotton Fabrics,Goods capability of tenderness,air permeability and moistures absorption feels.</p>
+            <h3><span class="off-price">$299</span><span class="text-secondary org-price">$499</span><span class="text-success offer">33% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images/formal shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men's Loose Fit Formal Shirt</h2>
+            <p>Men's Loose Fit Business Button-Down Long Sleeve Shirt For Spring Purple Casual Long Sleeve and plain Shirt.</p>
+            <h3><span class="off-price">$279</span><span class="text-secondary org-price">$459</span><span class="text-success offer">29% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+       
+            
+
+
+
+
+
+
+            <h1 id="f2" style="margin-top:0px;">Casual shirts</h1>
+
+
+
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/casual shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Men's Regular Fit Casual Shirt</h2>
+                <p>Elevate your style with our Tonal Check Shirts, a sophisticated blend of subtle checks seamlessly transition.</p>
+                <h3><span class="off-price">$229</span><span class="text-secondary org-price">$999</span><span class="text-success offer">77% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    
+    
+                <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/casual shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>HOMBRE shirt - Coffee</h2>
+                <p>HOMBRE shirt has a comfortable yet stylish fit and is made from a high-quality polyester and spandex blend.</p>
+                <h3><span class="off-price">$329</span><span class="text-secondary org-price">$999</span><span class="text-success offer">67% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    
+    
+    
+    
+    
+    
+    
+<div style="display: flex; margin:10px;">
+    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/casual shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men Casual Solid Color Sleeve</h2>
+            <p>Dark Grey Casual Collars Long Sleeves  Corduroy Plain Shirt Embellished Slight Stretch Men Clothing.</p>
+            <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">40% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/casual shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Stretch Bamboo Formal Shirt</h2>
+            <p>Blue Casual Collar Long Sleeve Fabric Plain Shirt Embellished Slight Stretch Spring/Fall Men Clothing.</p>
+            <h3><span class="off-price">$349</span><span class="text-secondary org-price">$699</span><span class="text-success offer">50% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+         
+         
+         
+         
+         
+         
+         
+         
+         
+    <div style="display: flex; margin:10px;">
+    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/casual shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men's Solid Casual Shirt</h2>
+            <p>Men's Solid Color Shirts,Front Buttons And Long Sleeves,Casual Wear Dark Green,Long Sleeves.</p>
+            <h3><span class="off-price">$249</span><span class="text-secondary org-price">$999</span><span class="text-success offer">73% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/casual shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men's Single Breasted Long Sleeve</h2>
+            <p>Grey Casual,Work Collar Long Sleeve Fabric Plain Shirt Embellished Slight Stretch Men Clothing.</p>
+            <h3><span class="off-price">$379</span><span class="text-secondary org-price">$899</span><span class="text-success offer">54% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+      <h1 id="f3" style="margin-top:0px;">Printed shirts</h1>
+
+
+
+      <div style="display: flex; margin:10px;">
+          <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+              <div class="row g-0">
+              <div class="col-md-4" >
+                  <img src="./images1/printed shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                  <div class="contents">    
+                  <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                  <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                  </div>  
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                  <h2>Men Floral Print Shirt</h2>
+                  <p>White Boho Collar Short Sleeve Fabric Floral Shirts Embellished Non-Stretch Summer Men Clothing.</p>
+                  <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                  <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                  <div class="btn-group">
+                    <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <button class="btn btn-outline-dark size">XS</button>
+                        <button class="btn btn-outline-dark size">S</button>
+                        <button class="btn btn-outline-dark size">M</button>
+                        <button class="btn btn-outline-dark size">L</button>
+                        <button class="btn btn-outline-dark size">XL</button>
+                        <button class="btn btn-outline-dark size">XLL</button>
+                    </ul>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+      
+      
+                  <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+              <div class="row g-0">
+              <div class="col-md-4" >
+                  <img src="./images1/printed shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                  <div class="contents">    
+                  <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                  <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                  </div>  
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                  <h2>Men Floral Print Shirt Without Tee</h2>
+                  <p>White Casual Collar Short Sleeve Fabric Floral, Letter Shirt Embellished Slight Stretch Men Clothing.</p>
+                  <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                  <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                  <div class="btn-group">
+                    <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <button class="btn btn-outline-dark size">XS</button>
+                        <button class="btn btn-outline-dark size">S</button>
+                        <button class="btn btn-outline-dark size">M</button>
+                        <button class="btn btn-outline-dark size">L</button>
+                        <button class="btn btn-outline-dark size">XL</button>
+                        <button class="btn btn-outline-dark size">XLL</button>
+                    </ul>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+            
+            
+            
+            
+            
+            
+            
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/printed shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Men's Printed Beach shirt</h2>
+                <p>Product Description * Item:Men's Printed Beach T-Shirt Lapel Slim Fit Shirts Casual Short Sleeves Tees.</p>
+                <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    
+    
+                <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/printed shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Stylish Contrasting Stripe Print</h2>
+                <p>Black and white Casual Collar Fabric Pronted Shirt Embellished Slight Stretch Spring/Fall Men Clothing.</p>
+                <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+            <div style="display: flex; margin:10px;">
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+                <div class="row g-0">
+                <div class="col-md-4" >
+                    <img src="./images1/printed shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                    <div class="contents">    
+                    <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                    <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                    </div>  
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h2>Men Short Sleeve 3D Printed</h2>
+                    <p>Men's Solid Color Shirt With Front Buttons And Shorts Sleeves, For Daily Casual Wear Printed shirt.</p>
+                    <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                    <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                    <div class="btn-group">
+                      <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                      </button>
+                      <ul class="dropdown-menu">
+                          <button class="btn btn-outline-dark size">XS</button>
+                          <button class="btn btn-outline-dark size">S</button>
+                          <button class="btn btn-outline-dark size">M</button>
+                          <button class="btn btn-outline-dark size">L</button>
+                          <button class="btn btn-outline-dark size">XL</button>
+                          <button class="btn btn-outline-dark size">XLL</button>
+                      </ul>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    
+        
+        
+                    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+                <div class="row g-0">
+                <div class="col-md-4" >
+                    <img src="./images1/printed shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                    <div class="contents">    
+                    <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                    <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                    </div>  
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h2>Men's Floral Print Vintage Flower</h2>
+                    <p>100% Rayon Lightweight, Breathable fabric with comfort Regular fit,No bleach Perfect for daily wear.</p>
+                    <h3><span class="off-price">$399</span><span class="text-secondary org-price">$599</span><span class="text-success offer">34% off</span></h3>
+                    <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                    <div class="btn-group">
+                      <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                      </button>
+                      <ul class="dropdown-menu">
+                          <button class="btn btn-outline-dark size">XS</button>
+                          <button class="btn btn-outline-dark size">S</button>
+                          <button class="btn btn-outline-dark size">M</button>
+                          <button class="btn btn-outline-dark size">L</button>
+                          <button class="btn btn-outline-dark size">XL</button>
+                          <button class="btn btn-outline-dark size">XLL</button>
+                      </ul>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+
+      <h1 id="f4" style="margin-top:0px;">Popcorn Shirts</h1>
+
+
+
+      <div style="display: flex; margin:10px;">
+          <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+              <div class="row g-0">
+              <div class="col-md-4" >
+                  <img src="./images1/popcorn shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                  <div class="contents">    
+                  <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                  <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                  </div>  
+              </div>
+    <div class="col-md-8">
+        <div class="card-body">
+        <h2>Men Floral popcorn Shirt</h2>
+        <p>Introducing our Textured Full Sleeve Popcorn Fabric Shirts for Men – a seamless blends of style and comfort.</p>
+        <h3><span class="off-price">$381</span><span class="text-secondary org-price">$999</span><span class="text-success offer">61% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group">
+          <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn btn-outline-dark size">XS</button>
+              <button class="btn btn-outline-dark size">S</button>
+              <button class="btn btn-outline-dark size">M</button>
+              <button class="btn btn-outline-dark size">L</button>
+              <button class="btn btn-outline-dark size">XL</button>
+              <button class="btn btn-outline-dark size">XLL</button>
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        
+      
+                    
+          <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/popcorn shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men Floral popcorn shirt With Tee</h2>
+              <p>Package Includes:Pack of 1 Fancy Stylish Shirts For Sleeve,Material:Half Sleeve Popcorn Material Men's shirt</p>
+              <h3><span class="off-price">$381</span><span class="text-secondary org-price">$999</span><span class="text-success offer">61% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              
+  
+                    
+                    
+                    
+                    
+                    
+                    
+  <div style="display: flex; margin:10px;">
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/popcorn shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men's  Fashion New Drape Shirts</h2>
+              <p>Stay stylish and comfortable with this versatile shirts. Perfect for casual outing ,semi-formal event.</p>
+              <h3><span class="off-price">$379</span><span class="text-secondary org-price">$599</span><span class="text-success offer">46% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+  
+  
+              <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/popcorn shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Botones Para Hombres Shirt</h2>
+              <p>Black and Casual Collar Fabric popcorn Shirt Embellished Slight Stretch Spring/Fall Men Clothing.</p>
+              <h3><span class="off-price">$399</span><span class="text-secondary org-price">$799</span><span class="text-success offer">50% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+      <div style="display: flex; margin:10px;">
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/popcorn shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men Short Sleeve Shirt</h2>
+              <p>Men's Solid Color Shirt With Front Buttons And Short Sleeves, For Daily Casual Wear Printed shirt.</p>
+              <h3><span class="off-price">$449</span><span class="text-secondary org-price">$999</span><span class="text-success offer">42% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+
+              <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/popcorn shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men's Linen Summer wear Shirt</h2>
+              <p>100% Rayon Lightweight, Breathable fabric with great comfort Regular fit,Perfect for casual Wears.</p>
+              <h3><span class="off-price">$449</span><span class="text-secondary org-price">$999</span><span class="text-success offer">42% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+
+
+
+
+  <h1 id="f5" style="margin-top:0px;">Denim Shirts</h1>
+
+
+
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/denim shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+  <div class="col-md-8">
+      <div class="card-body">
+      <h2>Men's Drop Shoulder Denim Shirt</h2>
+      <p>Brand:Anbican,Material:Cotton,Style:Casual,Sleeve Length(cm):Full,Collar:Turn-down Collar,Closure.</p>
+      <h3><span class="off-price">$549</span><span class="text-secondary org-price">$999</span><span class="text-success offer">45% off</span></h3>
+      <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+      <div class="btn-group">
+        <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn btn-outline-dark size">XS</button>
+            <button class="btn btn-outline-dark size">S</button>
+            <button class="btn btn-outline-dark size">M</button>
+            <button class="btn btn-outline-dark size">L</button>
+            <button class="btn btn-outline-dark size">XL</button>
+            <button class="btn btn-outline-dark size">XLL</button>
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    
+                  
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/denim shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Spring Button Blue Denim Shirt</h2>
+            <p>Blue denim washed casual shirt,a spread collar,button packet, long sleeves with roll-up, chest pocket.</p>
+            <h3><span class="off-price">$499</span><span class="text-secondary org-price">$999</span><span class="text-success offer">50% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+          
+                            
+                            
+                            
+                            
+                            
+                            
+  <div style="display: flex; margin:10px;">
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/denim shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men Simple Solid Color Denim</h2>
+              <p>Men Simple Solid Color Denim Shirts For Daily Wear Light Wash Casual Long Sleeve Denim Plain Shirt Stretch.</p>
+              <h3><span class="off-price">$529</span><span class="text-secondary org-price">$1099</span><span class="text-success offer">56% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+  
+  
+              <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/denim shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Indigo Solid Denim Shirt</h2>
+              <p>indigo blue cotton denim classic collar concealed front button fastening long sleeves with buttoned cuffs curved.</p>
+              <h3><span class="off-price">$539</span><span class="text-secondary org-price">$1099</span><span class="text-success offer">52% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+    <div style="display: flex; margin:10px;">
+    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/denim shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Flip Pocket Loose Denim Shirt</h2>
+            <p>Black Casual Collar Half Sleeves Denim Plain Shirts Embellished Non-Stretch Men's Clothing.</p>
+            <h3><span class="off-price">$479</span><span class="text-secondary org-price">$979</span><span class="text-success offer">41% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/denim shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men's Plus Size Distres Denim Shirt</h2>
+            <p>Dark Wash Casual Collar Long Sleeve Denim Plain Shirt Non-Stretch Men Plus Size Clothing.</p>
+            <h3><span class="off-price">$439</span><span class="text-secondary org-price">$929</span><span class="text-success offer">57% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+    <h1 id="f6" style="margin-top:0px;">Lycra Shirts</h1>
+
+
+
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/lycra shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+  <div class="col-md-8">
+      <div class="card-body">
+      <h2>Mandarin Collar Long Sleeve Shirt</h2>
+      <p>White Casual Collar Long Sleeve Lycra Plain Shirt Embellished Non-Stretch Men Clothing.</p>
+      <h3><span class="off-price">$499</span><span class="text-secondary org-price">$999</span><span class="text-success offer">50% off</span></h3>
+      <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+      <div class="btn-group">
+        <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn btn-outline-dark size">XS</button>
+            <button class="btn btn-outline-dark size">S</button>
+            <button class="btn btn-outline-dark size">M</button>
+            <button class="btn btn-outline-dark size">L</button>
+            <button class="btn btn-outline-dark size">XL</button>
+            <button class="btn btn-outline-dark size">XLL</button>
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+            
+                          
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+      <div class="row g-0">
+      <div class="col-md-4" >
+          <img src="./images1/lycra shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+          <div class="contents">    
+          <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+          <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+      </div>
+      <div class="col-md-8">
+          <div class="card-body">
+          <h2>Aron Orange Slim Fit</h2>
+          <p>Shirt Material:Lycra Machine,Washable: No,Packages Include: Shirts Only Dry Clean Only.</p>
+          <h3><span class="off-price">$449</span><span class="text-secondary org-price">$999</span><span class="text-success offer">45% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group">
+            <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn btn-outline-dark size">XS</button>
+                <button class="btn btn-outline-dark size">S</button>
+                <button class="btn btn-outline-dark size">M</button>
+                <button class="btn btn-outline-dark size">L</button>
+                <button class="btn btn-outline-dark size">XL</button>
+                <button class="btn btn-outline-dark size">XLL</button>
+            </ul>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+                  
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+  <div style="display: flex; margin:10px;">
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/lycra shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Noah Slim Lycra Blue Striped Shirt</h2>
+              <p>Men Simple Blue lycra Shirt For Daily Wear Light Wash Casual Half Sleeve Lycra checked Non-Stretch.</p>
+              <h3><span class="off-price">$379</span><span class="text-secondary org-price">$999</span><span class="text-success offer">62% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+          
+
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+    <div class="row g-0">
+    <div class="col-md-4" >
+        <img src="./images1/lycra shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+        <div class="contents">    
+        <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+        <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+        </div>  
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+        <h2>Pink slim Fit Collar lycra Shirt</h2>
+        <p>indigo blue cotton denim classic collar concealed front buttons long sleeves,buttoned cuffs curved hem.</p>
+        <h3><span class="off-price">$399</span><span class="text-secondary org-price">$999</span><span class="text-success offer">60% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group">
+          <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn btn-outline-dark size">XS</button>
+              <button class="btn btn-outline-dark size">S</button>
+              <button class="btn btn-outline-dark size">M</button>
+              <button class="btn btn-outline-dark size">L</button>
+              <button class="btn btn-outline-dark size">XL</button>
+              <button class="btn btn-outline-dark size">XLL</button>
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+    <div style="display: flex; margin:10px;">
+    <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/lycra shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men Leaf Print Lycra Shirt</h2>
+            <p>Green Casual Collar Full Sleeve Lycra Printed  Shirt Embellished Non-Stretch Men Clothing.</p>
+            <h3><span class="off-price">$520</span><span class="text-secondary org-price">$999</span><span class="text-success offer">47% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+            <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+        <div class="row g-0">
+        <div class="col-md-4" >
+            <img src="./images1/lycra shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+            <div class="contents">    
+            <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+            <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+            </div>  
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2>Men Front Button Lycra Shirt</h2>
+            <p>Men Front Button Long Sleeve Shirts Collar Lycra Top Black Satin Plain Shirts Slight Stretch.</p>
+            <h3><span class="off-price">$469</span><span class="text-secondary org-price">$999</span><span class="text-success offer">57% off</span></h3>
+            <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+            <div class="btn-group">
+              <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+              </button>
+              <ul class="dropdown-menu">
+                  <button class="btn btn-outline-dark size">XS</button>
+                  <button class="btn btn-outline-dark size">S</button>
+                  <button class="btn btn-outline-dark size">M</button>
+                  <button class="btn btn-outline-dark size">L</button>
+                  <button class="btn btn-outline-dark size">XL</button>
+                  <button class="btn btn-outline-dark size">XLL</button>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>      
+            
+            
+
+
+
+
+  <h1 id="f7" style="margin-top:0px;">Checked Shirts</h1>
+
+
+
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/checked shirt 1.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+  <div class="col-md-8">
+      <div class="card-body">
+      <h2>Tall Green Brushed Check Shirt</h2>
+      <p>White Casual Collar Long Sleeve Lycra Plain Shirt with Embellished Non-Stretch Men Clothing.</p>
+      <h3><span class="off-price">$499</span><span class="text-secondary org-price">$999</span><span class="text-success offer">50% off</span></h3>
+      <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+      <div class="btn-group">
+        <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+        </button>
+        <ul class="dropdown-menu">
+            <button class="btn btn-outline-dark size">XS</button>
+            <button class="btn btn-outline-dark size">S</button>
+            <button class="btn btn-outline-dark size">M</button>
+            <button class="btn btn-outline-dark size">L</button>
+            <button class="btn btn-outline-dark size">XL</button>
+            <button class="btn btn-outline-dark size">XLL</button>
+        </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+            
+                          
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+      <div class="row g-0">
+      <div class="col-md-4" >
+          <img src="./images1/checked shirt 2.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+          <div class="contents">    
+          <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+          <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+      </div>
+      <div class="col-md-8">
+          <div class="card-body">
+          <h2>Check Snow black Mens Shirts</h2>
+          <p>Style: Casual/Street/Hip Pop/Preppy/Vintage Fabric Content: Cotton Blend Fit Type: Regular fit.</p>
+          <h3><span class="off-price">$349</span><span class="text-secondary org-price">$999</span><span class="text-success offer">65% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group">
+            <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn btn-outline-dark size">XS</button>
+                <button class="btn btn-outline-dark size">S</button>
+                <button class="btn btn-outline-dark size">M</button>
+                <button class="btn btn-outline-dark size">L</button>
+                <button class="btn btn-outline-dark size">XL</button>
+                <button class="btn btn-outline-dark size">XLL</button>
+            </ul>
+          </div>
+        </div>
+          </div>
+          </div>
+          </div>
+          </div>
+                          
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+    <div style="display: flex; margin:10px;">
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+            <div class="row g-0">
+            <div class="col-md-4" >
+                <img src="./images1/checked shirt 3.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+                <div class="contents">    
+                <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+                <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+                </div>  
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h2>Men'S Plaid Striped Checked Shirt</h2>
+                <p>Multicolor Casual Collar Long Sleeve Fabric Plaid Shirt Embellished Non-Stretch Men Clothing checked.</p>
+                <h3><span class="off-price">$390</span><span class="text-secondary org-price">$999</span><span class="text-success offer">69% off</span></h3>
+                <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+                <div class="btn-group">
+                  <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <button class="btn btn-outline-dark size">XS</button>
+                      <button class="btn btn-outline-dark size">S</button>
+                      <button class="btn btn-outline-dark size">M</button>
+                      <button class="btn btn-outline-dark size">L</button>
+                      <button class="btn btn-outline-dark size">XL</button>
+                      <button class="btn btn-outline-dark size">XLL</button>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            
+  
+          <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+      <div class="row g-0">
+      <div class="col-md-4" >
+          <img src="./images1/checked shirt 4.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+          <div class="contents">    
+          <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+          <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+          </div>  
+      </div>
+      <div class="col-md-8">
+          <div class="card-body">
+          <h2>Plus Size Men's Casual Plaid Shirt</h2>
+          <p>indigo blue cotton denim classic collar concealed front button fastening long sleeves with buttoned cuffs.</p>
+          <h3><span class="off-price">$549</span><span class="text-secondary org-price">$999</span><span class="text-success offer">45% off</span></h3>
+          <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+          <div class="btn-group">
+            <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+            </button>
+            <ul class="dropdown-menu">
+                <button class="btn btn-outline-dark size">XS</button>
+                <button class="btn btn-outline-dark size">S</button>
+                <button class="btn btn-outline-dark size">M</button>
+                <button class="btn btn-outline-dark size">L</button>
+                <button class="btn btn-outline-dark size">XL</button>
+                <button class="btn btn-outline-dark size">XLL</button>
+            </ul>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 
+      <div style="display: flex; margin:10px;">
+      <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px;">
+          <div class="row g-0">
+          <div class="col-md-4" >
+              <img src="./images1/checked shirt 5.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+              <div class="contents">    
+              <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+              <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+              </div>  
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+              <h2>Men's Front Button Long Sleeve</h2>
+              <p>Men's Front Button Long Sleeve Plaid Casual Top Multicolor Casual Fabric Plaid Shirt Non-Stretch Men Clothing.</p>
+              <h3><span class="off-price">$469</span><span class="text-secondary org-price">$999</span><span class="text-success offer">53% off</span></h3>
+              <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+              <div class="btn-group">
+                <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-outline-dark size">XS</button>
+                    <button class="btn btn-outline-dark size">S</button>
+                    <button class="btn btn-outline-dark size">M</button>
+                    <button class="btn btn-outline-dark size">L</button>
+                    <button class="btn btn-outline-dark size">XL</button>
+                    <button class="btn btn-outline-dark size">XLL</button>
+                </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+  
+  
+        <div class="card mb-3 shadow" style="max-width:700px; margin-top:20px; margin-left:30px;">
+    <div class="row g-0">
+    <div class="col-md-4" >
+        <img src="./images1/checked shirt 6.jpg" class="img-fluid rounded-start" alt="..." width="600px">
+        <div class="contents">    
+        <button class="shop-button"><i class="fa-solid fa-bag-shopping" style="margin-right:8px; font-size: 20px;"></i>Shop Now</button>
+        <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="margin-right:8px; font-size: 20px;"></i>Add to Cart</button>
+        </div>  
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+        <h2>Plaid Pocket Loose Casual Shirts</h2>
+        <p>Plus Size Men's Plaid Pocket Loose Shirt, Spring & Fall Multicolor Casual Long Sleeve Woven Fabric Plaid Shirt.</p>
+        <h3><span class="off-price">$429</span><span class="text-secondary org-price">$999</span><span class="text-success offer">57% off</span></h3>
+        <h4><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i></h4>
+        <div class="btn-group">
+          <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span style="font-size:20px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Size</span>
+          </button>
+          <ul class="dropdown-menu">
+              <button class="btn btn-outline-dark size">XS</button>
+              <button class="btn btn-outline-dark size">S</button>
+              <button class="btn btn-outline-dark size">M</button>
+              <button class="btn btn-outline-dark size">L</button>
+              <button class="btn btn-outline-dark size">XL</button>
+              <button class="btn btn-outline-dark size">XLL</button>
+          </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div class="top">
+          <a href="#top">Back to Top</a>
+         </div>
+      
+         <footer>
+          
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs col-sm-6 col-md-3">
+                <div class="foo-content">
+                  <h6>HELP & INFORMATION</h6>
+                  <a href=""><li>Help</li></a>
+                  <a href=""><li>Track Orders</li></a>
+                  <a href=""><li>Deliver & Returns</li></a>
+                  <a href=""><li>Sitemap</li></a>
+                </div>
+              </div>
+    
+              <div class="col-xs col-sm-6 col-md-3">
+                <div class="foo-content">
+                  <h6>ABOUT FAMOUS MEN'S WEAR</h6>
+                  <a href=""><li>About Us</li></a>
+                  <a href=""><li>Careers at Famous</li></a>
+                  <a href=""><li>Corporate responsibility</li></a>
+                  <a href=""><li>Investors'Site</li></a>
+                </div>
+              </div>
+    
+              <div class="col-xs col-sm-6 col-md-3">
+                <div class="foo-content">
+                  <h6>MORE FROM FAMOUS</h6>
+                  <a href=""><li>Mobile and Famous Apps</li></a>
+                  <a href=""><li>Famous Marketplace</li></a>
+                  <a href=""><li>Gift Voucher</li></a>
+                  <a href=""><li>Black Friday</li></a>
+                  <a href=""><li>Famous x Thrift+</li></a>
+                  <a href=""><li>Discover the Famous Credit Card</li></a>
+                </div>
+              </div>
+    
+              <div class="col-xs col-sm-6 col-md-3">
+                <div class="foo-content">
+                  <h6>SIGN UP TO NEWCUSTOMER</h6>
+                  <P class="fs-6">Enter your email address to get 5% off your first order and free shipping</P>
+                  <input type="text" placeholder="Enter your email...."style="border-radius: 50px; height: 50px;">
+                  <button class="subscribe">SUBSCRIBE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+    
+    
+    
+          </div>
+            
+          <hr>
+          
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4 col-sm-4 col-md-5">
+                <p class="fs-6"><i class="fa-regular fa-copyright"></i> 2024 Famous Men's Wear</p>
+              </div>
+    
+              <div class="col-8 col-sm-4 col-md-4" style="margin-top: -8px;">
+                <img src="./images/facebook.png" alt="" style="height: 40px; width: 50px;">
+                <img src="./images/instagram-removebg-preview.png" alt="" style="height: 40px; width: 50px; margin-left: -10px;">
+                <img src="./images/snapchat-removebg-preview.png" alt="" style="height: 40px; width: 50px;">
+                <img src="./images/youtube-removebg-preview.png" alt="" style="height: 40px; width: 50px;">
+              </div>
+    
+              <div class="col col-sm-4 col-md-3">
+                <p class="fs-6">Privacy & Cookies | Ts&Cs | Accessibilityh</p>
+              </div>
+            </div>
+          </div>
+            
+      
+         </footer>
+</body>
+</html>
